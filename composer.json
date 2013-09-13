@@ -1,0 +1,23 @@
+{
+    "name": "deft/elena-php",
+    "description": "Wrapper library for the BOVAG Elena webservice.",
+    "type": "library",
+    "keywords": ["bovag", "elena"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jan Kramer",
+            "email": "jan@deft.nl"
+        }
+    ],
+    "autoload": {
+        "psr-0": {
+            "": "src"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}
