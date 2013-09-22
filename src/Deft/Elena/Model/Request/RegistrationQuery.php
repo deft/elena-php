@@ -46,6 +46,14 @@ class RegistrationQuery
         ];
     }
 
+    public static function createFromArray(array $input)
+    {
+        $query = new self();
+        foreach ($input as $key => $value) $query->$key = $value;
+
+        return $query;
+    }
+
     public function createInputArgument()
     {
         $translations = self::getTranslations();
