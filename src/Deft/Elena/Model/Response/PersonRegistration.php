@@ -6,15 +6,19 @@ class PersonRegistration extends Registration
 {
     /** @var string */
     protected $initials;
+    public function getInitials() { return $this->initials; }
 
     /** @var string */
     protected $lastNamePrefix;
+    public function getLastNamePrefix() { return $this->lastNamePrefix; }
 
     /** @var string */
     protected $lastName;
+    public function getLastName() { return $this->lastName; }
 
     /** @var \DateTime */
     protected $dateOfBirth;
+    public function getDateOfBirth() { return $this->dateOfBirth; }
 
     public function __construct(array $input)
     {
