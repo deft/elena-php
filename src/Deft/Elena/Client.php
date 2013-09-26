@@ -4,7 +4,9 @@ namespace Deft\Elena;
 
 use Deft\Elena\Exception\ClientException;
 use Deft\Elena\Model\Request\RegistrationQuery;
+use Deft\Elena\Model\Response\CompanyRegistrationDetails;
 use Deft\Elena\Model\Response\PersonRegistration;
+use Deft\Elena\Model\Response\PersonRegistrationDetails;
 use Deft\Elena\Model\Response\RegistrationList;
 
 /**
@@ -50,6 +52,22 @@ XML;
         $input = $registrationQuery->createInputArgument();
 
         return RegistrationList::createFromSource($this->soapCall('opvragenRegistraties', $input));
+    }
+
+    public function queryPersonRegistration($id)
+    {
+        $input = $this->soapCall('opvragenPersoonRegistratie', ['RegistratieID' => $id]);
+        $input = get_object_vars(get_object_vars($input)['PersoonDetailRegistratie']);
+        $personRegistration = new PersonRegistrationDetails($input);
+        return $personRegistration;
+    }
+
+    public function queryCompanyRegistration($id)
+    {
+        $input = $this->soapCall('opvragenBedrijfRegistratie', ['RegistratieID' => $id]);
+        $input = get_object_vars(get_object_vars($input)['BedrijfDetailRegistratie']);
+        $companyRegistration = new CompanyRegistrationDetails($input);
+        return $companyRegistration;
     }
 
     private function soapCall($function, $input)
